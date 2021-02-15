@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="attends")
@@ -24,11 +26,14 @@ public class Attend implements Serializable{
   @GeneratedValue
   private Long id;
   
+  @NotNull
   @ManyToOne
-  @JoinColumn(nullable=false)
+  @JoinColumn(nullable = false)
   private Patient patient;
 
-  @Column(nullable=false)
+  @NotNull
+  @NotEmpty
+  @Column(nullable = false)
   private String vaccineName;
 
   private Attend() {
