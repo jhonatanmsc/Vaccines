@@ -13,7 +13,7 @@ public class ExampleController {
 
   @RequestMapping("/")
   public String index() {
-    return "Hello world!";
+    return "Hello world! endpoints implementeds '/patients' (pacientes) and '/attends' (ato de vacinação)";
   }
   
 }
