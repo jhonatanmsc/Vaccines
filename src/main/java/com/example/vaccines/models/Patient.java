@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 
 import org.antlr.v4.runtime.misc.NotNull;
 
@@ -24,9 +26,13 @@ public class Patient implements Serializable{
   @GeneratedValue
   private Long id;
 
+  @NotBlank
+  @NotEmpty
   @Column(unique=true, nullable=false)
   private String email;
 
+  @NotBlank
+  @NotEmpty
   @Column(unique=true, nullable=false)
   private String cpf;
 
