@@ -1,6 +1,5 @@
 package com.example.vaccines.models;
 
-import java.io.Serializable;
 import java.sql.Date;
 
 import javax.persistence.Column;
@@ -8,31 +7,20 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-
-import org.antlr.v4.runtime.misc.NotNull;
 
 @Entity
 @Table(name="patients")
-public class Patient implements Serializable{
-  
-  /**
-   *
-   */
+public class Patient {
+
   private static final long serialVersionUID = 1L;
 
   @Id
   @GeneratedValue
   private Long id;
 
-  @NotBlank
-  @NotEmpty
   @Column(unique=true, nullable=false)
   private String email;
 
-  @NotBlank
-  @NotEmpty
   @Column(unique=true, nullable=false)
   private String cpf;
 
@@ -75,11 +63,11 @@ public class Patient implements Serializable{
     return this.cpf;
   } 
 
-  public void setBrithDate(Date birthDate) {
+  public void setBirthDate(Date birthDate) {
     this.birthDate = birthDate;
   }
 
-  public Date getBirhtDate() {
+  public Date getBirthDate() {
     return this.birthDate;
   } 
 }

@@ -2,7 +2,6 @@ package com.example.vaccines.exception;
 
 import java.util.Date;
 
-import org.hibernate.PropertyValueException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -30,9 +29,10 @@ public class GlobalExceptionHandler {
 		return new ResponseEntity<>(errorDetails, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
-	@ExceptionHandler(PropertyValueException.class)
+	@ExceptionHandler(MethodArgumentNotValidException.class)
 	public ResponseEntity<?> customValidationErrorHanding(MethodArgumentNotValidException exception) {
-		ErrorDetails errorDetails = new ErrorDetails(new Date(), "Validation Error", exception.getBindingResult().getFieldError().getDefaultMessage());
+		ValidationErrorDetails errorDetails = new ValidationErrorDetails(new Date(), exception.getFieldErrors(),
+				exception.getBindingResult().getFieldError().getDefaultMessage());
 		return new ResponseEntity<>(errorDetails, HttpStatus.BAD_REQUEST);
 	}
 }
